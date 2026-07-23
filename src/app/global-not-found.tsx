@@ -42,7 +42,7 @@ export default async function GlobalNotFound() {
             shadow="none"
           />
           <div className="w-full md:max-w-xs flex flex-col justify-center items-center gap-y-5 px-5 py-5 rounded-3xl border-2 border-dashed border-primary/5 bg-primary/3">
-            <div className="text-lg text-center">
+            <div className="text-center">
               {tNotFound("description")}
             </div>
 
