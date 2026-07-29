@@ -10,10 +10,8 @@ const LandingHowItWorksSectionV1 = () => {
       <div className="flex flex-col gap-y-8 items-center">
         <div className="flex flex-col max-w-xl gap-y-2.5 items-center">
           <h2 className="text-center">
-            What the Workshop{" "}
-            <span className="text-primary bg-primary/5">
-              Actually Looks Like
-            </span>
+            What's{" "}
+            <span className="text-primary bg-primary/5">Actually INSIDE</span>
           </h2>
         </div>
 
@@ -24,12 +22,12 @@ const LandingHowItWorksSectionV1 = () => {
           <div className="flex flex-col col-span-1 h-min gap-y-3 rounded-3xl border border-primary/5 bg-primary/[1%] px-5 py-4.5">
             <FootprintsIcon className="text-primary" />{" "}
             <h5 className="leading-tight text-secondary">
-              <span className="text-primary bg-primary/5">Step 1 —</span> Save
-              Your Seat before it Fills Up
+              <span className="text-primary bg-primary/5">Step 1 —</span>{" "}
+              Positioning
             </h5>
             <span className="leading-8 text-secondary/80 text-[22px]">
-              Takes 30 seconds, no credit card. You'll get the live link and a
-              reminder before it starts
+              Get clear on what you do and why it matters, in language people
+              actually remember
             </span>
           </div>
 
@@ -37,12 +35,12 @@ const LandingHowItWorksSectionV1 = () => {
           <div className="flex flex-col col-span-1 h-min gap-y-3 rounded-3xl border border-primary/5 bg-primary/[1%] px-5 py-4.5">
             <FootprintsIcon className="text-primary" />{" "}
             <h5 className="leading-tight text-secondary">
-              <span className="text-primary bg-primary/5">Step 2 —</span> Show
-              Up (or Watch the Replay)
+              <span className="text-primary bg-primary/5">Step 2 —</span>{" "}
+              Content Structure
             </h5>
             <span className="leading-8 text-secondary/80 text-[22px]">
-              Live on Wednesday, 60–90 minutes. Can't make it live? The replay
-              is up Thursday and Friday
+              The system for turning one idea into a week of content that builds
+              on itself
             </span>
           </div>
 
@@ -50,12 +48,12 @@ const LandingHowItWorksSectionV1 = () => {
           <div className="flex flex-col col-span-1 h-min gap-y-3 rounded-3xl border border-primary/5 bg-primary/[1%] px-5 py-4.5">
             <FootprintsIcon className="text-primary" />{" "}
             <h5 className="leading-tight text-secondary">
-              <span className="text-primary bg-primary/5">Step 3 —</span> Leave
-              with a System, Not Notes
+              <span className="text-primary bg-primary/5">Step 3 —</span> The
+              Path to Demand
             </h5>
             <span className="leading-8 text-secondary/80 text-[22px]">
-              You'll walk out with a content and campaign framework you can
-              start running that same week
+              How to connect what you post to what you're actually trying to
+              sell
             </span>
           </div>
         </div>

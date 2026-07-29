@@ -4,9 +4,9 @@ import RegistrationForm from "@/components/registration-form";
 import SectionWrapper from "@/components/section-wrapper";
 
 const value_props = [
-  "no cost to attend, no card required",
-  "a campaign system, not just content tips",
-  "Live Q&A on your actual brand",
+  "instant download",
+  "a system, not a content list",
+  "written for founders, not marketers",
 ];
 
 const LandingFinalCTASectionV1 = () => {
@@ -14,15 +14,15 @@ const LandingFinalCTASectionV1 = () => {
     <SectionWrapper className="justify-center items-center">
       <div className="max-w-xl text-center pt-5 flex flex-col gap-y-2.5 items-center">
         <h3>
-          Seats Are LIMITED
-          <span className="text-primary">
-            &nbsp;— Your Invisibility Problem
-          </span>
-          &nbsp;isn't going Anywhere on its OWN
+          Your Product is Ready
+          <span className="text-primary">&nbsp;— Your Brand ISN'T</span>
+          &nbsp;
+          <br />
+          Fix that with this Guide
         </h3>
         <p>
-          You already know how to build. This is the missing half — get it in
-          one session, and start running it the same week
+          Get the exact system for turning what you build into something people
+          actually notice — and buy
         </p>
 
         <div className="flex flex-col gap-y-1">

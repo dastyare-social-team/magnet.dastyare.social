@@ -12,31 +12,23 @@
       "prefix": "One of These Is",
       "highlight": "Probably Your Question"
     },
-    "description": "Answered honestly — because the only thing between you and registering is usually one unanswered question",
+    "description": "Answered honestly — because the only thing between you and getting the guide is usually one unanswered question",
     "items": {
       "q1": {
-        "question": "is there a cost to attend?",
-        "answer": "No cost to attend — just register, no credit card required"
+        "question": "is there a cost for this?",
+        "answer": "No cost — just your name and email, instant download"
       },
       "q2": {
-        "question": "is this going to be a sales pitch the whole time?",
-        "answer": "The workshop teaches the content and campaign system in full"
+        "question": "how long is the guide?",
+        "answer": "[ADD: real page count / read time]"
       },
       "q3": {
-        "question": "do I need an existing audience to benefit from this?",
-        "answer": "No. This is built for founders starting from zero or near-zero visibility"
+        "question": "is this going to be a sales pitch?",
+        "answer": "The guide is complete and standalone. [ADD: honest answer about what follow-up emails, if any, come after download.]"
       },
       "q4": {
-        "question": "what if I can't attend live?",
-        "answer": "No. This is built for founders starting from zero or near-zero visibility"
-      },
-      "q5": {
-        "question": "how long is the workshop?",
-        "answer": "No. This is built for founders starting from zero or near-zero visibility"
-      },
-      "q6": {
-        "question": "how long is the workshop?",
-        "answer": "No. This is built for founders starting from zero or near-zero visibility"
+        "question": "do I need an existing audience for this to work?",
+        "answer": "No. Built for founders starting from zero or near-zero visibility"
       }
     },
     "contact": {
@@ -51,17 +43,16 @@
   "why_this_guide_different": {
     "table": {
       "headers": {
-        "empty": "",
-        "guide": "this Personal Branding Guide",
-        "generic_content_pdfs": "Generic content PDFs",
-        "guessing": "Guessing"
+        "col_one": "this Personal Branding Guide",
+        "col_two": "Generic content PDFs",
+        "col_three": "Guessing"
       },
       "rows": {
-        "technical_founders": "built for technical founders, not marketers",
-        "campaign_structure": "teaches a campaign structure, not just content ideas",
-        "product_side": "taught by someone who's shipped the product side too",
-        "team_or_budget": "runnable without a team or budget",
-        "live_qa": "Live Q&A on your specific brand"
+        "row_one": "built for technical founders, not marketers",
+        "row_two": "teaches a system, not just post ideas",
+        "row_three": "connects content to actual demand/sales",
+        "row_four": "written from firsthand experience",
+        "row_five": "instant download"
       },
       "values": {
         "sometimes": "sometimes",

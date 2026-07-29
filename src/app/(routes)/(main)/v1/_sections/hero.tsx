@@ -11,21 +11,22 @@ const value_props = [
 
 const LandingHeroSectionV1 = () => {
   return (
-    <SectionWrapper className="pt-0 border-0">
+    <SectionWrapper className="md:pt-0 border-0">
       <div className="flex flex-col flex-1 gap-y-8">
         <div className="flex flex-col gap-y-1.5">
           <p className="text-[20px]">
             Stop Guessing — Here's How to Build a Personal Brand That Sells
           </p>
           <h2>
-            A no-fluff <span className="text-primary">Guide for Founders</span>{" "}
-            Who can Build the Product but don't know how to build the brand
-            Around it{" "}
-            <span className="text-primary">
-              — What to Post, how to structure it,
-            </span>{" "}
-            and how to Turn Attention into Actual Demand
+            Stop Guessing What to Post{" "}
+            <span className="text-primary">— No More Content with No Plan</span>{" "}
+            behind it
           </h2>
+          <p>
+            A no-fluff guide for founders who can build products but don't know
+            how to build the brand around it — what to post, how to structure
+            it, and how to turn attention into actual demand
+          </p>
           <div className="flex flex-col gap-y-1">
             {value_props.map((value, index) => (
               <p key={index}>— {value}</p>
