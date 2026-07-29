@@ -3,7 +3,7 @@
 import RegistrationForm from "@/components/registration-form";
 import SectionWrapper from "@/components/section-wrapper";
 
-const LandingSocialProofBlockNum1SectionV1 = () => {
+const LandingSocialProofBlockNum1SectionV2 = () => {
   return (
     <SectionWrapper className="justify-center items-center md:pt-10 md:pb-10">
       <div className="flex flex-col gap-y-8 max-w-md items-center">
@@ -19,10 +19,10 @@ const LandingSocialProofBlockNum1SectionV1 = () => {
           &nbsp; not just more views
         </div>
 
-        <RegistrationForm primary_cta="Get Your Guide — Now" />
+        <RegistrationForm primary_cta="Save My Seat — Now" />
       </div>
     </SectionWrapper>
   );
 };
 
-export default LandingSocialProofBlockNum1SectionV1;
+export default LandingSocialProofBlockNum1SectionV2;

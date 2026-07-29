@@ -9,10 +9,10 @@ const value_props = [
   "written for founders, not marketers",
 ];
 
-const LandingFinalCTASectionV1 = () => {
+const LandingFinalCTASectionV2 = () => {
   return (
-    <SectionWrapper className="justify-center items-center">
-      <div className="max-w-xl text-center pt-5 flex flex-col gap-y-2.5 items-center">
+    <SectionWrapper>
+      <div className="max-w-xl pt-5 flex flex-col gap-y-2.5">
         <h3>
           Your Product is Ready
           <span className="text-primary">&nbsp;— Your Brand ISN'T</span>
@@ -35,8 +35,10 @@ const LandingFinalCTASectionV1 = () => {
           <RegistrationForm primary_cta="Get Your Guide — Now" />
         </div>
       </div>
+
+      <div className="aspect-square flex-1 bg-primary/[1%] border-2 border-primary/5"></div>
     </SectionWrapper>
   );
 };
 
-export default LandingFinalCTASectionV1;
+export default LandingFinalCTASectionV2;

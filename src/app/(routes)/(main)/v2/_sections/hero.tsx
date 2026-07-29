@@ -3,13 +3,7 @@
 import RegistrationForm from "@/components/registration-form";
 import SectionWrapper from "@/components/section-wrapper";
 
-const value_props = [
-  "the exact structure to go from invisible to known in your market",
-  "how to turn posting into a system that leads to sales, not just likes",
-  "what to fix first if your brand feels busy but stalled",
-];
-
-const LandingHeroSectionV1 = () => {
+const LandingHeroSectionV2 = () => {
   return (
     <SectionWrapper className="md:pt-0 border-0">
       <div className="flex flex-col flex-1 gap-y-8">
@@ -27,11 +21,6 @@ const LandingHeroSectionV1 = () => {
             how to build the brand around it — what to post, how to structure
             it, and how to turn attention into actual demand
           </p>
-          <div className="flex flex-col gap-y-1">
-            {value_props.map((value, index) => (
-              <p key={index}>— {value}</p>
-            ))}
-          </div>
         </div>
 
         <div className="flex flex-col gap-y-2.5">
@@ -48,4 +37,4 @@ const LandingHeroSectionV1 = () => {
   );
 };
 
-export default LandingHeroSectionV1;
+export default LandingHeroSectionV2;

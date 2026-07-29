@@ -117,7 +117,7 @@ const LandingWhyThisGuideIsDifferentSectionV1 = async () => {
           <p>Not Another "50 Content IDEAS" PDF</p>
         </div>
 
-        <RegistrationForm primary_cta="Get the Guide — Now" />
+        <RegistrationForm primary_cta="Get Your Guide — Now" />
 
         {/* —— Comparison Table —— */}
         <Table className="w-full max-w-5xl overflow-x-scroll select-none">

@@ -3,7 +3,7 @@
 import RegistrationForm from "@/components/registration-form";
 import SectionWrapper from "@/components/section-wrapper";
 
-const LandingThreeDreamOutcomeBlocksSectionV1 = () => {
+const LandingThreeDreamOutcomeBlocksSectionV2 = () => {
   return (
     <>
       <SectionWrapper className="md:flex-row-reverse">
@@ -63,4 +63,4 @@ const LandingThreeDreamOutcomeBlocksSectionV1 = () => {
   );
 };
 
-export default LandingThreeDreamOutcomeBlocksSectionV1;
+export default LandingThreeDreamOutcomeBlocksSectionV2;
