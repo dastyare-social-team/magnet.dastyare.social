@@ -3,8 +3,8 @@ import { getTranslations } from "next-intl/server";
 import { CrownIcon } from "lucide-react";
 import RegistrationForm from "@/components/registration-form";
 
-const LandingWhyThisWorkshopIsDifferentSectionV2 = async () => {
-  const t = await getTranslations("why_this_workshop_different");
+const LandingWhyThisGuideIsDifferentSectionV2 = async () => {
+  const t = await getTranslations("why_this_guide_different");
 
   return (
     <SectionWrapper className="flex flex-1 justify-center items-center">
@@ -97,4 +97,4 @@ const LandingWhyThisWorkshopIsDifferentSectionV2 = async () => {
   );
 };
 
-export default LandingWhyThisWorkshopIsDifferentSectionV2;
+export default LandingWhyThisGuideIsDifferentSectionV2;

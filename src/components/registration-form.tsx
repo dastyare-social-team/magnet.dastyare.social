@@ -191,7 +191,7 @@ const RegistrationForm = ({ primary_cta }: { primary_cta: string }) => {
         last_name: nameValidation.last_name,
         email: emailValidation.sanitized,
         phone: phoneValidation.sanitized,
-        source: "workshop",
+        source: "magnet",
       };
 
       const requestUrl = new URL(WEBHOOK_URL);

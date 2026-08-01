@@ -3,7 +3,7 @@ import LandingHeroSectionV2 from "./_sections/hero";
 import LandingProblemSectionV2 from "./_sections/problem";
 import LandingThreeDreamOutcomeBlocksSectionV2 from "./_sections/three-dream-outcome-blocks";
 import LandingSocialProofBlockNum2SectionV2 from "./_sections/social-proof-block-num2";
-import LandingWhyThisWorkshopIsDifferentSectionV2 from "./_sections/why-this-workshop-different";
+import LandingWhyThisGuideIsDifferentSectionV2 from "./_sections/why-this-guide-different";
 import LandingHowItWorksSectionV2 from "./_sections/how-it-works";
 import LandingMeetTheHostSectionV2 from "./_sections/meet-the-host";
 import LandingFAQSectionV2 from "./_sections/faq";
@@ -23,7 +23,7 @@ const Page = () => {
 
       <LandingSocialProofBlockNum1SectionV1 />
 
-      <LandingWhyThisWorkshopIsDifferentSectionV2 />
+      <LandingWhyThisGuideIsDifferentSectionV2 />
 
       <LandingHowItWorksSectionV2 />
 
