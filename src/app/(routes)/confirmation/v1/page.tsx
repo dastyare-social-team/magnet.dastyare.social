@@ -1,11 +1,19 @@
-"use client";
-
 import WindowLayout from "@/components/window-layout";
+import ConfirmationHeaderSectionV1 from "../v1/_sections/confirmation-header";
+import ConfirmationFeaturedOfferSectionV1 from "../v1/_sections/featured-offer";
+import ConfirmationCrossPromoteNum1SectionV1 from "../v1/_sections/cross-promote-num1";
+import ConfirmationCrossPromoteNum2SectionV1 from "../v1/_sections/cross-promote-num2";
 
 const Page = () => {
   return (
     <WindowLayout>
-      <></>
+      <ConfirmationHeaderSectionV1 />
+
+      {/* <ConfirmationFeaturedOfferSectionV1 /> */}
+
+      <ConfirmationCrossPromoteNum1SectionV1 />
+
+      <ConfirmationCrossPromoteNum2SectionV1 />
     </WindowLayout>
   );
 };
