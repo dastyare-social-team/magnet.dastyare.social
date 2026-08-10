@@ -9,19 +9,19 @@ const ConfirmationCrossPromoteNum1SectionV1 = () => {
     <SectionWrapper className="md:flex-row-reverse">
       <div className="flex flex-col flex-1 gap-y-8">
         <div className="flex flex-col gap-y-1.5">
-          <h2>Not sure where your brand stands yet? Find out in 5 minutes</h2>
+          <h2>Want to go deeper than the guide?</h2>
           <p>
-            Before the workshop, get a quick read on your Personal Brand Health
-            Score — no requirements required to take it
+            Join the live workshop — build your content and campaign system in
+            real time, with Q&A on your actual brand
           </p>
         </div>
 
         <Link
-          href="https://quiz.dastyare.social"
+          href="https://workshop.dastyare.social"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Button>Get My Score — Now</Button>
+          <Button>Save My Seat — Now</Button>
         </Link>
       </div>
 

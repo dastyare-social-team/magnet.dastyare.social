@@ -9,19 +9,19 @@ const ConfirmationCrossPromoteNum2SectionV1 = () => {
     <SectionWrapper>
       <div className="flex flex-col flex-1 gap-y-8">
         <div className="flex flex-col gap-y-1.5">
-          <h2>Want something to read before the workshop?</h2>
+          <h2>Curious where you actually stand?</h2>
           <p>
-            Grab the founder's guide to personal branding — positioning, content
-            structure, and how to turn attention into demand
+            Get your Personal Brand Health Score in 5 minutes — no email
+            required
           </p>
         </div>
 
         <Link
-          href="https://magnet.dastyare.social"
+          href="https://quiz.dastyare.social"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Button>Get My Guide — Now</Button>
+          <Button>Get My Score — Now</Button>
         </Link>
       </div>
 
