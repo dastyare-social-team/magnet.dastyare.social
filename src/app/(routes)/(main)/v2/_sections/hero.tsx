@@ -25,7 +25,10 @@ const LandingHeroSectionV2 = () => {
         </div>
 
         <div className="flex flex-col gap-y-2.5">
-          <RegistrationForm primary_cta="Get Your Guide — Now" />
+          <RegistrationForm
+            primary_cta="Get Your Guide — Now"
+            cta_location="hero"
+          />
 
           <div className="text-[18px] opacity-80 leading-6.5">
             instant download — no spam

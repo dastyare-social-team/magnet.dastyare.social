@@ -95,7 +95,13 @@ const validatePhone = (
   return { ok: true, sanitized };
 };
 
-const RegistrationForm = ({ primary_cta }: { primary_cta: string }) => {
+const RegistrationForm = ({
+  primary_cta,
+  cta_location = "unknown",
+}: {
+  primary_cta: string;
+  cta_location?: string;
+}) => {
   const router = useRouter();
   const pathname = usePathname();
   const [name, set_name] = useState("");
@@ -104,6 +110,8 @@ const RegistrationForm = ({ primary_cta }: { primary_cta: string }) => {
   const [show_phone_input, set_show_phone_input] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const routeVariant = pathname?.includes("/v2") ? "v2" : "v1";
 
   const handleContinue = () => {
     const nameValidation = validateName(name);
@@ -131,7 +139,8 @@ const RegistrationForm = ({ primary_cta }: { primary_cta: string }) => {
       stage: "form_started",
     });
     capture("registration_form_continue", {
-      variant: "v1",
+      variant: routeVariant,
+      cta_location,
       stage: "contact_details",
     });
     setError(null);
@@ -203,6 +212,7 @@ const RegistrationForm = ({ primary_cta }: { primary_cta: string }) => {
 
       capture("registration_form_submit_attempt", {
         variant: routeVariant,
+        cta_location,
         has_phone: Boolean(phoneValidation.sanitized),
       });
 
@@ -221,6 +231,7 @@ const RegistrationForm = ({ primary_cta }: { primary_cta: string }) => {
 
       capture("registration_form_submit_success", {
         variant: routeVariant,
+        cta_location,
         has_phone: Boolean(phoneValidation.sanitized),
       });
       identify(emailValidation.sanitized, {
@@ -234,6 +245,7 @@ const RegistrationForm = ({ primary_cta }: { primary_cta: string }) => {
       captureException(error, {
         context: "registration_form_submit",
         variant: routeVariant,
+        cta_location,
       });
       setError("We could not save your seat right now. Please try again.");
     } finally {
@@ -258,7 +270,10 @@ const RegistrationForm = ({ primary_cta }: { primary_cta: string }) => {
         <div>
           <Button
             onClick={() =>
-              capture("registration_cta_clicked", { variant: "v1" })
+              capture("registration_cta_clicked", {
+                variant: routeVariant,
+                cta_location,
+              })
             }
           >
             {primary_cta}
