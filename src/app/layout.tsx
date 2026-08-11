@@ -5,7 +5,7 @@ import { pally } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: {
-    default: "Magnet — Dastyare Social",
+    default: "Guide — Dastyare Social",
     template: "%s — Dastyare Social",
   },
   description: "magnet.dastyare.social",
