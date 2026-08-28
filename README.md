@@ -2,6 +2,10 @@
 
 A landing page offering the Founder's Personal Brand Guide as a lead magnet, with an A/B-tested registration funnel that sends leads to a confirmation page.
 
-![Landing](screenshots/landing.png)
+![Landing (v1)](screenshots/landing-v1.webp)
 
-![Confirmation](screenshots/confirmation.png)
+![Landing (v2)](screenshots/landing-v2.webp)
+
+![Confirmation (v1)](screenshots/confirmation-v1.webp)
+
+![Confirmation (v2)](screenshots/confirmation-v2.webp)
