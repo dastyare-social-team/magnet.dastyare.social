@@ -169,3 +169,88 @@ Replay only records after the visitor accepts the consent banner (step 6).
 | Experiment shows no assignments | Flag `home-page-variant` doesn't exist, or variant values aren't exactly `v1`/`v2`. |
 | Funnel step 1 empty (`landing_page_viewed`) | PageAnalytics not mounted — check `src/app/layout.tsx`. |
 | Old `pageview` / `ab_test_assignment` events missing | Expected — replaced by `$pageview` / `$feature_flag_called`. |
+
+
+---
+
+## 9. Dev-team relay
+
+Server-side events are optionally fanned out to a **second, dev-team PostHog
+project** through our Cloudflare proxy (`ingest.dastyare.social`). This keeps
+clients / founders seeing the clean project while engineers get the same
+server events in their own project.
+
+How it works (see `src/lib/analytics/server.ts`):
+
+- `src/lib/analytics/devrel.ts` holds the **proxy URL + an opaque token** in an
+  obfuscated form. Our PostHog project key is never stored here — the proxy
+  injects it on our side. The relay is enabled only when that config decodes
+  successfully.
+- `src/lib/analytics/server.ts` exposes a `RelayPostHog` whose `capture` fans
+  out to **both** destinations: the direct client/founder project (103916) and
+  the dev-team relay. `src/lib/posthog-server.ts` uses this shared client, so
+  the `$feature_flag_called` assignment events also reach both projects.
+- Set `DISABLE_DEV_TEAM_PH=true` to turn the relay fan-out **off** while
+  keeping the direct captures. Defaults to relaying.
+
+## 10. Dev-team Bootstrap (optional)
+
+`scripts/posthog-bootstrap.ts` (run via `bun run bootstrap:posthog`) provisions
+the dev-team PostHog folder tree, dashboards and insights onto a target project
+through the admin REST API — idempotent, safe to re-run. It needs:
+
+- `PH_PERSONAL_API_KEY` — a `phx_` personal API key with the `file_system`
+  scope (used for folder/object management).
+- `PH_PROJECT_ID` — optional; auto-discovered from the key's `@current` project
+  when unset.
+- `PH_HOST` — the PostHog host (e.g. `https://us.i.posthog.com`).
+
+See `.env.example` for the placeholders. Run `bun run bootstrap:posthog
+--help` to see the available flags (`--validate`, `--project`, `--drift`).
+
+## 11. Data products (session replay, error tracking, heatmaps)
+
+The PostHog data products are enabled on **both** projects:
+
+| Project | ID | Role | Replay | Error tracking | Heatmaps |
+| --- | --- | --- | --- | --- | --- |
+| `omidshabab.com` (client / founder) | 103916 | Landing-repo client events land here | On | On | On (client) |
+| `Dastyare Social — ORG` (dev team) | 581705 | Server relay fan-out destination | On | On | n/a (server-only) |
+
+### Client project — 103916
+
+Server flags (verified live via `project-get`):
+
+- `session_recording_opt_in: true` — **session replay** enabled.
+- `autocapture_exceptions_opt_in: true` — **error tracking** enabled (uncaught
+  exceptions + rejections are autocaptured).
+- Heatmaps are enabled **client-side** via the SDK `capture_heatmaps` flag (there
+  is no server flag) — see `src/lib/posthog.ts`.
+
+SDK config (`src/lib/posthog.ts`), identical across the three landing repos:
+
+```ts
+posthog.init(token, {
+  capture_exceptions: true,   // error tracking (autocapture)
+  capture_heatmaps: true,     // heatmaps
+  // ...
+});
+posthog.startSessionRecording();
+```
+
+`$exception` / `client_error` are already flowing. Replay, error-tracking issues
+and heatmap data appear once the deploy ships **and** a visitor accepts the
+consent banner (`opt_out_capturing_by_default` is on by design, so only consented
+visitors contribute — see section 6).
+
+### Dev-team project — 581705
+
+Enabled (verified live via the project REST API with a `phx_` personal key that
+has membership in 581705):
+
+- `session_recording_opt_in: true`
+- `autocapture_exceptions_opt_in: true`
+
+Note: 581705 receives **server-only** relay events (no browser SDK points at it),
+so replay and heatmaps are limited there by design; **error tracking works** —
+server `$exception` events from the relay arrive in this project.
