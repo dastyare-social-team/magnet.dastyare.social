@@ -193,20 +193,23 @@ How it works (see `src/lib/analytics/server.ts`):
 - Set `DISABLE_DEV_TEAM_PH=true` to turn the relay fan-out **off** while
   keeping the direct captures. Defaults to relaying.
 
-## 10. Dev-team Bootstrap (optional)
+## 10. PostHog bootstrap (optional)
 
 `scripts/posthog-bootstrap.ts` (run via `bun run bootstrap:posthog`) provisions
-the dev-team PostHog folder tree, dashboards and insights onto a target project
-through the admin REST API — idempotent, safe to re-run. It needs:
+the standard PostHog dashboard suite — 8 dashboards (Overview, Onboarding &
+Conversion, Content Engagement, User Growth, Push Notifications, LLM & AI
+Visibility, MCP Usage, Reliability) with ~40 insights — onto a target project
+through the admin REST API. The suite is audience-neutral and is provisioned
+identically on every account. It is idempotent: re-running finds existing
+dashboards/insights by name and reuses them. It needs:
 
-- `PH_PERSONAL_API_KEY` — a `phx_` personal API key with the `file_system`
-  scope (used for folder/object management).
+- `PH_PERSONAL_API_KEY` — a `phx_` personal API key with **admin** scope.
 - `PH_PROJECT_ID` — optional; auto-discovered from the key's `@current` project
   when unset.
 - `PH_HOST` — the PostHog host (e.g. `https://us.i.posthog.com`).
 
-See `.env.example` for the placeholders. Run `bun run bootstrap:posthog
---help` to see the available flags (`--validate`, `--project`, `--drift`).
+See `.env.example` for the placeholders (loaded automatically via
+`dotenv/config`).
 
 ## 11. Data products (session replay, error tracking, heatmaps)
 
