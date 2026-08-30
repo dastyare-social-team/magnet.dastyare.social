@@ -196,20 +196,35 @@ How it works (see `src/lib/analytics/server.ts`):
 ## 10. PostHog bootstrap (optional)
 
 `scripts/posthog-bootstrap.ts` (run via `bun run bootstrap:posthog`) provisions
-the standard PostHog dashboard suite — 8 dashboards (Overview, Onboarding &
-Conversion, Content Engagement, User Growth, Push Notifications, LLM & AI
-Visibility, MCP Usage, Reliability) with ~40 insights — onto a target project
-through the admin REST API. The suite is audience-neutral and is provisioned
-identically on every account. It is idempotent: re-running finds existing
-dashboards/insights by name and reuses them. It needs:
+this app's PostHog dashboard suite onto a target project through the admin REST
+API. The suite only references events the app actually captures — it mirrors
+what `src/components/page-analytics.tsx`, `registration-form.tsx`,
+`posthog-provider.tsx`, etc. emit, so no dashboard or insight is created for
+features this project does not have:
+
+- **Overview** — Unique Visitors (DAU), Weekly Active Users (WAU), Pageviews,
+  Top Pages (`pathname` breakdown).
+- **Conversion** — Registration Funnel (landing → CTA → continue → submit →
+  confirmation), Landing Engagement ($pageview → scroll ≥50% → CTA),
+  CTA Performance by Section (`cta_location` breakdown), Confirmation Views,
+  Form Validation Failures, Button Clicks, FAQ Opens.
+- **Reliability** — Web Vitals, Uncaught Exceptions ($exception), Client Errors.
+
+The script is idempotent: re-running finds existing dashboards/insights by name
+and reuses them. When several of our products share one PostHog account, run it
+per product with `PH_DASHBOARD_LABEL` set so every dashboard and insight is
+suffixed ` — {product}` (e.g. `Overview — Magnet`). It needs:
 
 - `PH_PERSONAL_API_KEY` — a `phx_` personal API key with **admin** scope.
 - `PH_PROJECT_ID` — optional; auto-discovered from the key's `@current` project
   when unset.
 - `PH_HOST` — the PostHog host (e.g. `https://us.i.posthog.com`).
+- `PH_DASHBOARD_LABEL` — optional; product name used as the ` — {label}`
+  suffix so per-product suites coexist in one account.
 
-See `.env.example` for the placeholders (loaded automatically via
-`dotenv/config`).
+The script retries transient 429/5xx responses with backoff, so re-running (or
+letting it finish) is safe. See `.env.example` for the placeholders (loaded
+automatically via `dotenv/config`).
 
 ## 11. Data products (session replay, error tracking, heatmaps)
 
