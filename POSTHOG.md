@@ -186,12 +186,12 @@ How it works (see `src/lib/analytics/server.ts`):
   obfuscated form. Our PostHog project key is never stored here — the proxy
   injects it on our side. The relay is enabled only when that config decodes
   successfully.
-- `src/lib/analytics/server.ts` exposes a `RelayPostHog` whose `capture` fans
-  out to **both** destinations: the direct client/founder project (103916) and
-  the dev-team relay. `src/lib/posthog-server.ts` uses this shared client, so
-  the `$feature_flag_called` assignment events also reach both projects.
-- Set `DISABLE_DEV_TEAM_PH=true` to turn the relay fan-out **off** while
-  keeping the direct captures. Defaults to relaying.
+- `src/lib/analytics/server.ts` exposes a `RelayPostHog` whose `capture` sends
+  each event to the Dastyare Social ORG project (581705) and, by default, also
+  to the dev-team relay. `src/lib/posthog-server.ts` uses this shared client, so
+  `$feature_flag_called` assignment events are included too.
+- The relay is ON by default; set `DISABLE_DEV_TEAM_PH=false` to stop sending
+  through the proxy while keeping the direct captures.
 
 ## 10. PostHog bootstrap (optional)
 
@@ -211,16 +211,14 @@ features this project does not have:
 - **Reliability** — Web Vitals, Uncaught Exceptions ($exception), Client Errors.
 
 The script is idempotent: re-running finds existing dashboards/insights by name
-and reuses them. When several of our products share one PostHog account, run it
-per product with `PH_DASHBOARD_LABEL` set so every dashboard and insight is
-suffixed ` — {product}` (e.g. `Overview — Magnet`). It needs:
+and reuses them. When several of our products share one PostHog account, run the
+bootstrap per product so every dashboard and insight is suffixed ` — {product}`
+(e.g. `Overview — Magnet`). It needs:
 
 - `PH_PERSONAL_API_KEY` — a `phx_` personal API key with **admin** scope.
 - `PH_PROJECT_ID` — optional; auto-discovered from the key's `@current` project
   when unset.
 - `PH_HOST` — the PostHog host (e.g. `https://us.i.posthog.com`).
-- `PH_DASHBOARD_LABEL` — optional; product name used as the ` — {label}`
-  suffix so per-product suites coexist in one account.
 
 The script retries transient 429/5xx responses with backoff, so re-running (or
 letting it finish) is safe. See `.env.example` for the placeholders (loaded
@@ -228,16 +226,9 @@ automatically via `dotenv/config`).
 
 ## 11. Data products (session replay, error tracking, heatmaps)
 
-The PostHog data products are enabled on **both** projects:
-
-| Project | ID | Role | Replay | Error tracking | Heatmaps |
-| --- | --- | --- | --- | --- | --- |
-| `omidshabab.com` (client / founder) | 103916 | Landing-repo client events land here | On | On | On (client) |
-| `Dastyare Social — ORG` (dev team) | 581705 | Server relay fan-out destination | On | On | n/a (server-only) |
-
-### Client project — 103916
-
-Server flags (verified live via `project-get`):
+Both the browser (posthog-js) and the server (posthog-node) now point at the
+single **Dastyare Social — ORG** project (581705). The data products are
+enabled on it (verified via `project-get`):
 
 - `session_recording_opt_in: true` — **session replay** enabled.
 - `autocapture_exceptions_opt_in: true` — **error tracking** enabled (uncaught
@@ -260,15 +251,3 @@ posthog.startSessionRecording();
 and heatmap data appear once the deploy ships **and** a visitor accepts the
 consent banner (`opt_out_capturing_by_default` is on by design, so only consented
 visitors contribute — see section 6).
-
-### Dev-team project — 581705
-
-Enabled (verified live via the project REST API with a `phx_` personal key that
-has membership in 581705):
-
-- `session_recording_opt_in: true`
-- `autocapture_exceptions_opt_in: true`
-
-Note: 581705 receives **server-only** relay events (no browser SDK points at it),
-so replay and heatmaps are limited there by design; **error tracking works** —
-server `$exception` events from the relay arrive in this project.
