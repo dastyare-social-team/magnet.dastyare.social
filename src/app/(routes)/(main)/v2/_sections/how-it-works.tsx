@@ -4,7 +4,11 @@ import RegistrationForm from "@/components/registration-form";
 import SectionWrapper from "@/components/section-wrapper";
 import { FootprintsIcon } from "lucide-react";
 
-const LandingHowItWorksSectionV2 = () => {
+const LandingHowItWorksSectionV2 = ({
+  webhookUrl,
+}: {
+  webhookUrl?: string;
+}) => {
   return (
     <SectionWrapper className="justify-center items-center">
       <div className="flex flex-col gap-y-8 items-center">
@@ -18,6 +22,7 @@ const LandingHowItWorksSectionV2 = () => {
         <RegistrationForm
           primary_cta="Get Your Guide — Now"
           cta_location="how-it-works"
+          webhookUrl={webhookUrl}
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-5 gap-y-5 mt-5">

@@ -4,7 +4,11 @@ import RegistrationForm from "@/components/registration-form";
 import SectionWrapper from "@/components/section-wrapper";
 import Image from "next/image";
 
-const LandingHeroSectionV2 = () => {
+const LandingHeroSectionV2 = ({
+  webhookUrl,
+}: {
+  webhookUrl?: string;
+}) => {
   return (
     <SectionWrapper className="md:pt-0 border-0">
       <div className="flex flex-col flex-1 gap-y-8">
@@ -28,6 +32,7 @@ const LandingHeroSectionV2 = () => {
           <RegistrationForm
             primary_cta="Get Your Guide — Now"
             cta_location="hero"
+            webhookUrl={webhookUrl}
           />
 
           <div className="text-[18px] opacity-80 leading-6.5">

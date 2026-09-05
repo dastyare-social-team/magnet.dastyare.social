@@ -9,8 +9,6 @@ import { cn } from "@/lib/utils";
 import { useRouter, usePathname } from "next/navigation";
 import { useState, type KeyboardEvent } from "react";
 
-const WEBHOOK_URL = process.env.NEXT_PUBLIC_REGISTRATION_WEBHOOK_URL?.trim();
-
 const sanitizeText = (value: string) =>
   value
     .replace(/[\u0000-\u001F\u007F]/g, " ")
@@ -98,9 +96,11 @@ const validatePhone = (
 const RegistrationForm = ({
   primary_cta,
   cta_location = "unknown",
+  webhookUrl,
 }: {
   primary_cta: string;
   cta_location?: string;
+  webhookUrl?: string;
 }) => {
   const router = useRouter();
   const pathname = usePathname();
@@ -182,7 +182,7 @@ const RegistrationForm = ({
       return;
     }
 
-    if (!WEBHOOK_URL) {
+    if (!webhookUrl) {
       capture("registration_form_webhook_missing");
       setError("The registration webhook URL is not configured.");
       return;
@@ -203,7 +203,7 @@ const RegistrationForm = ({
         source: "magnet",
       };
 
-      const requestUrl = new URL(WEBHOOK_URL);
+      const requestUrl = new URL(webhookUrl);
       Object.entries(payload).forEach(([key, value]) => {
         if (value) {
           requestUrl.searchParams.set(key, value);

@@ -10,7 +10,11 @@ const value_props = [
   "what to fix first if your brand feels busy but stalled",
 ];
 
-const LandingHeroSectionV1 = () => {
+const LandingHeroSectionV1 = ({
+  webhookUrl,
+}: {
+  webhookUrl?: string;
+}) => {
   return (
     <SectionWrapper className="md:pt-0 border-0">
       <div className="flex flex-col flex-1 gap-y-8">
@@ -36,7 +40,8 @@ const LandingHeroSectionV1 = () => {
         </div>
 
         <div className="flex flex-col gap-y-2.5">
-          <RegistrationForm
+<RegistrationForm
+            webhookUrl={webhookUrl}
             primary_cta="Get Your Guide — Now"
             cta_location="hero"
           />

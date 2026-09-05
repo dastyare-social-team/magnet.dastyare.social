@@ -9,7 +9,11 @@ const value_props = [
   "written for founders, not marketers",
 ];
 
-const LandingFinalCTASectionV1 = () => {
+const LandingFinalCTASectionV1 = ({
+  webhookUrl,
+}: {
+  webhookUrl?: string;
+}) => {
   return (
     <SectionWrapper className="justify-center items-center">
       <div className="max-w-xl text-center pt-5 flex flex-col gap-y-2.5 items-center">
@@ -33,6 +37,7 @@ const LandingFinalCTASectionV1 = () => {
 
         <div className="pt-5">
           <RegistrationForm
+            webhookUrl={webhookUrl}
             primary_cta="Get Your Guide — Now"
             cta_location="final-cta"
           />

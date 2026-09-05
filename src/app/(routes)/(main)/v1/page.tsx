@@ -12,25 +12,25 @@ import LandingFinalCTASectionV1 from "./_sections/final-cta";
 const Page = () => {
   return (
     <WindowLayout>
-      <LandingHeroSectionV1 />
+      <LandingHeroSectionV1 webhookUrl={process.env.WEBHOOK_URL} />
 
       <LandingSocialProofBlockNum2SectionV1 />
 
-      <LandingProblemSectionV1 />
+      <LandingProblemSectionV1 webhookUrl={process.env.WEBHOOK_URL} />
 
-      <LandingSocialProofBlockNum1SectionV1 />
+      <LandingSocialProofBlockNum1SectionV1 webhookUrl={process.env.WEBHOOK_URL} />
 
-      <LandingThreeDreamOutcomeBlocksSectionV1 />
+      <LandingThreeDreamOutcomeBlocksSectionV1 webhookUrl={process.env.WEBHOOK_URL} />
 
-      <LandingSocialProofBlockNum1SectionV1 />
+      <LandingSocialProofBlockNum1SectionV1 webhookUrl={process.env.WEBHOOK_URL} />
 
-      <LandingWhyThisGuideIsDifferentSectionV1 />
+      <LandingWhyThisGuideIsDifferentSectionV1 webhookUrl={process.env.WEBHOOK_URL} />
 
-      <LandingHowItWorksSectionV1 />
+      <LandingHowItWorksSectionV1 webhookUrl={process.env.WEBHOOK_URL} />
 
       <LandingFAQSectionV1 />
 
-      <LandingFinalCTASectionV1 />
+      <LandingFinalCTASectionV1 webhookUrl={process.env.WEBHOOK_URL} />
     </WindowLayout>
   );
 };

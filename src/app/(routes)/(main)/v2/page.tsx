@@ -13,25 +13,25 @@ import LandingSocialProofBlockNum1SectionV1 from "../v1/_sections/social-proof-b
 const Page = () => {
   return (
     <WindowLayout>
-      <LandingHeroSectionV2 />
+      <LandingHeroSectionV2 webhookUrl={process.env.WEBHOOK_URL} />
 
       <LandingSocialProofBlockNum2SectionV2 />
 
-      <LandingProblemSectionV2 />
+      <LandingProblemSectionV2 webhookUrl={process.env.WEBHOOK_URL} />
 
-      <LandingThreeDreamOutcomeBlocksSectionV2 />
+      <LandingThreeDreamOutcomeBlocksSectionV2 webhookUrl={process.env.WEBHOOK_URL} />
 
-      <LandingSocialProofBlockNum1SectionV1 />
+      <LandingSocialProofBlockNum1SectionV1 webhookUrl={process.env.WEBHOOK_URL} />
 
-      <LandingWhyThisGuideIsDifferentSectionV2 />
+      <LandingWhyThisGuideIsDifferentSectionV2 webhookUrl={process.env.WEBHOOK_URL} />
 
-      <LandingHowItWorksSectionV2 />
+      <LandingHowItWorksSectionV2 webhookUrl={process.env.WEBHOOK_URL} />
 
-      <LandingMeetTheHostSectionV2 />
+      <LandingMeetTheHostSectionV2 webhookUrl={process.env.WEBHOOK_URL} />
 
       <LandingFAQSectionV2 />
 
-      <LandingFinalCTASectionV2 />
+      <LandingFinalCTASectionV2 webhookUrl={process.env.WEBHOOK_URL} />
     </WindowLayout>
   );
 };

@@ -4,7 +4,11 @@ import RegistrationForm from "@/components/registration-form";
 import SectionWrapper from "@/components/section-wrapper";
 import Image from "next/image";
 
-const LandingMeetTheHostSectionV2 = () => {
+const LandingMeetTheHostSectionV2 = ({
+  webhookUrl,
+}: {
+  webhookUrl?: string;
+}) => {
   return (
     <SectionWrapper>
       <div className="max-w-xl pt-5 flex flex-col gap-y-2.5">
@@ -21,7 +25,10 @@ const LandingMeetTheHostSectionV2 = () => {
         </p>
 
         <div className="pt-5">
-          <RegistrationForm primary_cta="Get Your Guide — Now" />
+          <RegistrationForm
+            primary_cta="Get Your Guide — Now"
+            webhookUrl={webhookUrl}
+          />
         </div>
       </div>
 

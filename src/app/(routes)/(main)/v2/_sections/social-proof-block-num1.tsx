@@ -3,7 +3,11 @@
 import RegistrationForm from "@/components/registration-form";
 import SectionWrapper from "@/components/section-wrapper";
 
-const LandingSocialProofBlockNum1SectionV2 = () => {
+const LandingSocialProofBlockNum1SectionV2 = ({
+  webhookUrl,
+}: {
+  webhookUrl?: string;
+}) => {
   return (
     <SectionWrapper className="justify-center items-center md:pt-10 md:pb-10">
       <div className="flex flex-col gap-y-8 max-w-md items-center">
@@ -19,7 +23,10 @@ const LandingSocialProofBlockNum1SectionV2 = () => {
           &nbsp; not just more views
         </div>
 
-        <RegistrationForm primary_cta="Save My Seat — Now" />
+        <RegistrationForm
+          primary_cta="Save My Seat — Now"
+          webhookUrl={webhookUrl}
+        />
       </div>
     </SectionWrapper>
   );

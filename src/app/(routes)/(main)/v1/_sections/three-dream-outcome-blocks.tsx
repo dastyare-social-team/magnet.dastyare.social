@@ -4,7 +4,11 @@ import RegistrationForm from "@/components/registration-form";
 import SectionWrapper from "@/components/section-wrapper";
 import Image from "next/image";
 
-const LandingThreeDreamOutcomeBlocksSectionV1 = () => {
+const LandingThreeDreamOutcomeBlocksSectionV1 = ({
+  webhookUrl,
+}: {
+  webhookUrl?: string;
+}) => {
   return (
     <>
       <SectionWrapper className="md:flex-row-reverse">
@@ -19,7 +23,10 @@ const LandingThreeDreamOutcomeBlocksSectionV1 = () => {
             </p>
           </div>
 
-          <RegistrationForm primary_cta="Get Your Guide — Now" />
+          <RegistrationForm
+            primary_cta="Get Your Guide — Now"
+            webhookUrl={webhookUrl}
+          />
         </div>
 
         <div
@@ -48,7 +55,10 @@ const LandingThreeDreamOutcomeBlocksSectionV1 = () => {
             </p>
           </div>
 
-          <RegistrationForm primary_cta="Get Your Guide — Now" />
+          <RegistrationForm
+            primary_cta="Get Your Guide — Now"
+            webhookUrl={webhookUrl}
+          />
         </div>
 
         <div
@@ -77,7 +87,10 @@ const LandingThreeDreamOutcomeBlocksSectionV1 = () => {
             </p>
           </div>
 
-          <RegistrationForm primary_cta="Get Your Guide — Now" />
+          <RegistrationForm
+            primary_cta="Get Your Guide — Now"
+            webhookUrl={webhookUrl}
+          />
         </div>
 
         <div
